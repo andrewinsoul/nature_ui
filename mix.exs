@@ -27,7 +27,7 @@ defmodule NatureUI.MixProject do
     [
       {:phoenix, "~> 1.7"},
       {:phoenix_live_view, "~> 1.0.0"},
-      # optional if you want Tailwind integration
+      # optional if you want Tailwind integration.
       {:tailwind, "~> 0.2", runtime: false},
       # for bundling Svelte JS assets
       {:esbuild, "~> 0.7", runtime: false}
