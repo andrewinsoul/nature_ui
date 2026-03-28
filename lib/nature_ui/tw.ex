@@ -3,10 +3,10 @@ defmodule NatureUi.Tw do
     classes
     |> Enum.filter(& &1)
     |> Enum.join(" ")
-    |> TailwindMerge.merge()
+    |> TailwindMerge.tw_merge()
   end
 
   def merge(classes) when is_binary(classes) do
-    TailwindMerge.merge(classes)
+    TailwindMerge.tw_merge(classes)
   end
 end
