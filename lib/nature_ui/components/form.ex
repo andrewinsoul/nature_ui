@@ -11,7 +11,7 @@ defmodule NatureUI.Components.Form do
   - `rest`: other attributes (action, method, phx-submit, etc.)
   - `inner_block`: slot for child inputs/components
   """
-  slot :inner_block
+  slot(:inner_block)
 
   def form(assigns) do
     assigns =
@@ -22,7 +22,10 @@ defmodule NatureUI.Components.Form do
     ~H"""
     <form
       data-nature-ui="form"
-      class={Tw.merge("space-y-6 #{@class}")}
+      class={Tw.merge([
+        "space-y-6",
+        @class
+      ])}
       {@rest}
     >
       <%= render_slot(@inner_block) %>

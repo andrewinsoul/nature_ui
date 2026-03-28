@@ -26,7 +26,7 @@ defmodule NatureUI.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.7"},
-      {:tailwind_merge, "~> 0.1.0"},
+      {:tails, "~> 0.1.11"},
       {:phoenix_live_view, "~> 1.0.0"},
       # optional if you want Tailwind integration..
       {:tailwind, "~> 0.2", runtime: false},

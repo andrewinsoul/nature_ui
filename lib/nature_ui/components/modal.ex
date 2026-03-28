@@ -15,7 +15,10 @@ defmodule NatureUI.Components.Modal do
     ~H"""
       <div
         data-nature-ui="modal"
-        class={Tw.merge("fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 #{@class}")}
+        class={Tw.merge([
+          "fixed inset-0 flex items-center justify-center bg-black bg-opacity-50",
+          @class
+        ])}
         {@rest}
       >
         <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">

@@ -25,7 +25,11 @@ defmodule NatureUI.Components.Alert do
 
     ~H"""
     <div
-      class={Tw.merge("rounded-md p-4 flex items-center gap-2 #{styles()[@type]} #{@class}")}
+      class={Tw.merge([
+        "rounded-md p-4 flex items-center gap-2",
+        styles()[@type],
+        @class
+      ])}
       {@rest}
     >
       <%= render_slot(@inner_block) %>

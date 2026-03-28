@@ -81,7 +81,16 @@ defmodule NatureUI.Components.Input do
         <input
           type="text"
           data-nature-ui="text"
-          class={Tw.merge("#{@input_base_class} #{@input_error_class} #{@input_prefix_class} #{@input_suffix_class} #{@class}")}
+          class={
+            Tw.merge([
+              @input_base_class,
+              @input_error_class,
+              @input_prefix_class,
+              @input_suffix_class,
+              @class
+            ])
+          }
+
           {@rest}
         />
 
@@ -180,7 +189,14 @@ defmodule NatureUI.Components.Input do
 
         <textarea
           data-nature-ui="textarea"
-          class={Tw.merge("#{@textarea_base_class} #{@textarea_error_class} #{@textarea_prefix_class} #{@textarea_suffix_class} #{@class}")}
+          class={
+            Tw.merge([
+              @textarea_base_class,
+              @textarea_error_class,
+              @textarea_suffix_class,
+              @class
+            ])
+          }
           {@rest}
         ><%= render_slot(@inner_block) %></textarea>
 
@@ -282,7 +298,15 @@ defmodule NatureUI.Components.Input do
 
         <select
           data-nature-ui="select"
-          class={Tw.merge("#{@select_base_class} #{@select_error_class} #{@select_prefix_class} #{@select_suffix_class} #{@class}")}
+          class={
+            Tw.merge([
+              @select_base_class,
+              @select_error_class,
+              @select_prefix_class,
+              @select_suffix_class,
+              @class
+            ])
+          }
           {@rest}
         >
           <%= render_slot(@options) %>
@@ -328,7 +352,10 @@ defmodule NatureUI.Components.Input do
     ~H"""
     <option
       value={@value}
-      class={Tw.merge("#{@option_base_class} #{@class}")}
+      class={Tw.merge([
+        @option_base_class,
+        @class
+      ])}
     >
       <%= render_slot(@inner_block) %>
     </option>
@@ -374,7 +401,11 @@ defmodule NatureUI.Components.Input do
         <input
           type="checkbox"
           data-nature-ui="checkbox"
-          class={Tw.merge("#{@checkbox_base_class} #{@checkbox_error_class} #{@class}")}
+          class={Tw.merge([
+            @checkbox_base_class,
+            @checkbox_error_class,
+            @class
+          ])}
           {@rest}
         />
         <%= render_slot(@label) %>
@@ -431,7 +462,13 @@ defmodule NatureUI.Components.Input do
         <input
           type="radio"
           data-nature-ui="radio"
-          class={Tw.merge("#{@radio_base_class} #{@radio_error_class} #{@class}")}
+          class={
+            Tw.merge([
+              @radio_base_class,
+              @radio_error_class,
+              @class
+            ])
+          }
           {@rest}
         />
         <%= render_slot(@label) %>
@@ -542,7 +579,13 @@ defmodule NatureUI.Components.Input do
           data-fetch-url={@fetch_url}
           data-param={@param}
           phx-debounce={@debounce}
-          class={Tw.merge("#{@autocomplete_base_class} #{@autocomplete_error_class} #{@autocomplete_prefix_class} #{@autocomplete_suffix_class} #{@class}")}
+          class={Tw.merge([
+            @autocomplete_base_class,
+            @autocomplete_error_class,
+            @autocomplete_prefix_class,
+            @autocomplete_suffix_class,
+            @class
+          ])}
           {@rest}
         />
 
@@ -629,7 +672,13 @@ defmodule NatureUI.Components.Input do
             true -> "datepicker"
           end
         }
-        class={Tw.merge("#{@datepicker_base_class} #{@datepicker_error_class} #{@class}")}
+        class={
+          Tw.merge([
+            @datepicker_base_class,
+            @datepicker_error_class,
+            @class
+          ])
+        }
         {@rest}
       />
 
@@ -697,7 +746,11 @@ defmodule NatureUI.Components.Input do
         multiple={@multiple}
         accept={@accept}
        phx-change="files_selected"
-        class={Tw.merge("#{@fileupload_base_class} #{@fileupload_error_class} #{@class}")}
+        class={Tw.merge([
+          @fileupload_base_class,
+          @fileupload_error_class,
+          @class
+        ])}
         {@rest}
       />
 
