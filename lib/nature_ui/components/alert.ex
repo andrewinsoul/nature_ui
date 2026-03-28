@@ -1,4 +1,5 @@
 defmodule NatureUI.Components.Alert do
+  alias NatureUi.Tw
   use Phoenix.Component
 
   defp styles do
@@ -24,11 +25,7 @@ defmodule NatureUI.Components.Alert do
 
     ~H"""
     <div
-      class={[
-        "rounded-md p-4 flex items-center gap-2",
-        styles()[@type],
-        @class
-      ]}
+      class={Tw.merge("rounded-md p-4 flex items-center gap-2 #{styles()[@type]} #{@class}")}
       {@rest}
     >
       <%= render_slot(@inner_block) %>

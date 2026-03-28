@@ -1,4 +1,5 @@
 defmodule NatureUI.Components.Button do
+  alias NatureUi.Tw
   use Phoenix.Component
 
   defp variants do
@@ -23,11 +24,7 @@ defmodule NatureUI.Components.Button do
 
     ~H"""
     <button
-      class={[
-        "px-4 py-2 rounded font-medium transition",
-        variants()[@variant],
-        @class
-      ]}
+      class={Tw.merge("px-4 py-2 rounded font-medium transition #{variants()[@variant]} #{@class}")}
       {@rest}
     >
       <%= render_slot(@inner_block) %>

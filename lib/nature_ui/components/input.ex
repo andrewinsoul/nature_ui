@@ -1,4 +1,5 @@
 defmodule NatureUI.Components.Input do
+  alias NatureUi.Tw
   use Phoenix.Component
 
   @doc """
@@ -16,6 +17,57 @@ defmodule NatureUI.Components.Input do
       |> assign_new(:error, fn -> false end)
       |> assign_new(:class, fn -> "" end)
       |> assign_new(:message, fn -> nil end)
+      |> assign_new(:prefix_icon, fn -> nil end)
+      |> assign_new(:suffix_icon, fn -> nil end)
+
+    assigns =
+      assign(
+        assigns,
+        :input_base_class,
+        "block w-full rounded-md shadow-sm sm:text-sm transition"
+      )
+
+    input_error_class =
+      if assigns[:error] do
+        "border-red-500 focus:border-red-500 focus:ring-red-500"
+      else
+        "border-gray-300 focus:border-green-500 focus:ring-green-500"
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :input_error_class,
+        input_error_class
+      )
+
+    input_prefix_class =
+      if assigns[:prefix_icon] do
+        "pl-8"
+      else
+        ""
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :input_prefix_class,
+        input_prefix_class
+      )
+
+    input_suffix_class =
+      if assigns[:prefix_icon] do
+        "pl-8"
+      else
+        ""
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :input_suffix_class,
+        input_suffix_class
+      )
 
     ~H"""
     <div class="space-y-1">
@@ -29,16 +81,7 @@ defmodule NatureUI.Components.Input do
         <input
           type="text"
           data-nature-ui="text"
-          class={[
-            "block w-full rounded-md shadow-sm sm:text-sm transition",
-            if(@error,
-              do: "border-red-500 focus:border-red-500 focus:ring-red-500",
-              else: "border-gray-300 focus:border-green-500 focus:ring-green-500"
-            ),
-            if(@prefix_icon, do: "pl-8", else: ""),
-            if(@suffix_icon, do: "pr-8", else: ""),
-            @class
-          ]}
+          class={Tw.merge("#{@input_base_class} #{@input_error_class} #{@input_prefix_class} #{@input_suffix_class} #{@class}")}
           {@rest}
         />
 
@@ -56,10 +99,6 @@ defmodule NatureUI.Components.Input do
         ]}>
           <%= @message %>
         </p>
-      <% end %>
-
-      <%= if @offline do %>
-        <script src="/nature_ui/nature_ui.js"></script>
       <% end %>
     </div>
     """
@@ -81,6 +120,55 @@ defmodule NatureUI.Components.Input do
       |> assign_new(:class, fn -> "" end)
       |> assign_new(:message, fn -> nil end)
 
+    assigns =
+      assign(
+        assigns,
+        :textarea_base_class,
+        "block w-full rounded-md shadow-sm sm:text-sm transition"
+      )
+
+    textarea_error_class =
+      if assigns[:error] do
+        "border-red-500 focus:border-red-500 focus:ring-red-500"
+      else
+        "border-gray-300 focus:border-green-500 focus:ring-green-500"
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :textarea_error_class,
+        textarea_error_class
+      )
+
+    textarea_prefix_class =
+      if assigns[:prefix_icon] do
+        "pl-8"
+      else
+        ""
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :textarea_prefix_class,
+        textarea_prefix_class
+      )
+
+    textarea_suffix_class =
+      if assigns[:prefix_icon] do
+        "pl-8"
+      else
+        ""
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :textarea_suffix_class,
+        textarea_suffix_class
+      )
+
     ~H"""
     <div class="space-y-1">
       <div class="relative flex items-start">
@@ -92,16 +180,7 @@ defmodule NatureUI.Components.Input do
 
         <textarea
           data-nature-ui="textarea"
-          class={[
-            "block w-full rounded-md shadow-sm sm:text-sm transition",
-            if(@error,
-              do: "border-red-500 focus:border-red-500 focus:ring-red-500",
-              else: "border-gray-300 focus:border-green-500 focus:ring-green-500"
-            ),
-            if(@prefix_icon, do: "pl-8", else: ""),
-            if(@suffix_icon, do: "pr-8", else: ""),
-            @class
-          ]}
+          class={Tw.merge("#{@textarea_base_class} #{@textarea_error_class} #{@textarea_prefix_class} #{@textarea_suffix_class} #{@class}")}
           {@rest}
         ><%= render_slot(@inner_block) %></textarea>
 
@@ -119,10 +198,6 @@ defmodule NatureUI.Components.Input do
         ]}>
           <%= @message %>
         </p>
-      <% end %>
-
-      <%= if @offline do %>
-        <script src="/nature_ui/nature_ui.js"></script>
       <% end %>
     </div>
     """
@@ -147,6 +222,55 @@ defmodule NatureUI.Components.Input do
       |> assign_new(:class, fn -> "" end)
       |> assign_new(:message, fn -> nil end)
 
+    assigns =
+      assign(
+        assigns,
+        :select_base_class,
+        "block w-full rounded-md shadow-sm sm:text-sm transition"
+      )
+
+    select_error_class =
+      if assigns[:error] do
+        "border-red-500 focus:border-red-500 focus:ring-red-500"
+      else
+        "border-gray-300 focus:border-green-500 focus:ring-green-500"
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :select_error_class,
+        select_error_class
+      )
+
+    select_prefix_class =
+      if assigns[:prefix_icon] do
+        "pl-8"
+      else
+        ""
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :select_prefix_class,
+        select_prefix_class
+      )
+
+    select_suffix_class =
+      if assigns[:prefix_icon] do
+        "pl-8"
+      else
+        ""
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :select_suffix_class,
+        select_suffix_class
+      )
+
     ~H"""
     <div class="space-y-1">
       <div class="relative flex items-center">
@@ -158,16 +282,7 @@ defmodule NatureUI.Components.Input do
 
         <select
           data-nature-ui="select"
-          class={[
-            "block w-full rounded-md shadow-sm sm:text-sm transition",
-            if(@error,
-              do: "border-red-500 focus:border-red-500 focus:ring-red-500",
-              else: "border-gray-300 focus:border-green-500 focus:ring-green-500"
-            ),
-            if(@prefix_icon, do: "pl-8", else: ""),
-            if(@suffix_icon, do: "pr-8", else: ""),
-            @class
-          ]}
+          class={Tw.merge("#{@select_base_class} #{@select_error_class} #{@select_prefix_class} #{@select_suffix_class} #{@class}")}
           {@rest}
         >
           <%= render_slot(@options) %>
@@ -188,10 +303,6 @@ defmodule NatureUI.Components.Input do
           <%= @message %>
         </p>
       <% end %>
-
-      <%= if @offline do %>
-        <script src="/nature_ui/nature_ui.js"></script>
-      <% end %>
     </div>
     """
   end
@@ -207,13 +318,17 @@ defmodule NatureUI.Components.Input do
       assigns
       |> assign_new(:class, fn -> "" end)
 
+    assigns =
+      assign(
+        assigns,
+        :option_base_class,
+        "px-2 py-1 text-sm text-gray-700 hover:bg-gray-100"
+      )
+
     ~H"""
     <option
       value={@value}
-      class={[
-        "px-2 py-1 text-sm text-gray-700 hover:bg-gray-100",
-        @class
-      ]}
+      class={Tw.merge("#{@option_base_class} #{@class}")}
     >
       <%= render_slot(@inner_block) %>
     </option>
@@ -237,17 +352,29 @@ defmodule NatureUI.Components.Input do
       |> assign_new(:class, fn -> "" end)
       |> assign_new(:message, fn -> nil end)
 
+    assigns =
+      assign(
+        assigns,
+        :checkbox_base_class,
+        "rounded border-gray-300 text-green-600 focus:ring-green-500 transition"
+      )
+
+    checkbox_error_class =
+      if assigns[:error] do
+        "border-red-500 focus:ring-red-500"
+      else
+        ""
+      end
+
+    assigns = assign(assigns, :checkbox_error_class, checkbox_error_class)
+
     ~H"""
     <div class="space-y-1">
       <label class="flex items-center gap-2">
         <input
           type="checkbox"
           data-nature-ui="checkbox"
-          class={[
-            "rounded border-gray-300 text-green-600 focus:ring-green-500 transition",
-            if(@error, do: "border-red-500 focus:ring-red-500", else: ""),
-            @class
-          ]}
+          class={Tw.merge("#{@checkbox_base_class} #{@checkbox_error_class} #{@class}")}
           {@rest}
         />
         <%= render_slot(@label) %>
@@ -260,10 +387,6 @@ defmodule NatureUI.Components.Input do
         ]}>
           <%= @message %>
         </p>
-      <% end %>
-
-      <%= if @offline do %>
-        <script src="/nature_ui/nature_ui.js"></script>
       <% end %>
     </div>
     """
@@ -286,17 +409,29 @@ defmodule NatureUI.Components.Input do
       |> assign_new(:class, fn -> "" end)
       |> assign_new(:message, fn -> nil end)
 
+    assigns =
+      assign(
+        assigns,
+        :radio_base_class,
+        "h-4 w-4 rounded-full border-gray-300 text-green-600 focus:ring-green-500 transition"
+      )
+
+    radio_error_class =
+      if assigns[:error] do
+        "border-red-500 focus:ring-red-500"
+      else
+        ""
+      end
+
+    assigns = assign(assigns, :radio_error_class, radio_error_class)
+
     ~H"""
     <div class="space-y-1">
       <label class="flex items-center gap-2">
         <input
           type="radio"
           data-nature-ui="radio"
-          class={[
-            "h-4 w-4 rounded-full border-gray-300 text-green-600 focus:ring-green-500 transition",
-            if(@error, do: "border-red-500 focus:ring-red-500", else: ""),
-            @class
-          ]}
+          class={Tw.merge("#{@radio_base_class} #{@radio_error_class} #{@class}")}
           {@rest}
         />
         <%= render_slot(@label) %>
@@ -309,10 +444,6 @@ defmodule NatureUI.Components.Input do
         ]}>
           <%= @message %>
         </p>
-      <% end %>
-
-      <%= if @offline do %>
-        <script src="/nature_ui/nature_ui.js"></script>
       <% end %>
     </div>
     """
@@ -348,6 +479,55 @@ defmodule NatureUI.Components.Input do
       |> assign_new(:param, fn -> "q" end)
       |> assign_new(:debounce, fn -> 300 end)
 
+    assigns =
+      assign(
+        assigns,
+        :autocomplete_base_class,
+        "block w-full rounded-md border-gray-300 shadow-sm sm:text-sm transition"
+      )
+
+    autocomplete_error_class =
+      if assigns[:error] do
+        "border-red-500 focus:border-red-500 focus:ring-red-500"
+      else
+        "focus:border-green-500 focus:ring-green-500"
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :autocomplete_error_class,
+        autocomplete_error_class
+      )
+
+    autocomplete_prefix_class =
+      if assigns[:prefix_icon] do
+        "pl-8"
+      else
+        ""
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :autocomplete_prefix_class,
+        autocomplete_prefix_class
+      )
+
+    autocomplete_suffix_class =
+      if assigns[:prefix_icon] do
+        "pl-8"
+      else
+        ""
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :autocomplete_suffix_class,
+        autocomplete_suffix_class
+      )
+
     ~H"""
     <div class="space-y-1">
       <div class="relative">
@@ -362,14 +542,7 @@ defmodule NatureUI.Components.Input do
           data-fetch-url={@fetch_url}
           data-param={@param}
           phx-debounce={@debounce}
-          class={[
-            "block w-full rounded-md border-gray-300 shadow-sm sm:text-sm transition",
-            if(@error,
-              do: "border-red-500 focus:border-red-500 focus:ring-red-500",
-              else: "focus:border-green-500 focus:ring-green-500"
-            ),
-            @class
-          ]}
+          class={Tw.merge("#{@autocomplete_base_class} #{@autocomplete_error_class} #{@autocomplete_prefix_class} #{@autocomplete_suffix_class} #{@class}")}
           {@rest}
         />
 
@@ -402,10 +575,6 @@ defmodule NatureUI.Components.Input do
           <%= @message %>
         </p>
       <% end %>
-
-      <%= if @offline do %>
-        <script src="/nature_ui/nature_ui.js"></script>
-      <% end %>
     </div>
     """
   end
@@ -429,6 +598,27 @@ defmodule NatureUI.Components.Input do
       |> assign_new(:class, fn -> "" end)
       |> assign_new(:message, fn -> nil end)
 
+    assigns =
+      assign(
+        assigns,
+        :datepicker_base_class,
+        "block w-full rounded-md border-gray-300 shadow-sm sm:text-sm transition"
+      )
+
+    datepicker_error_class =
+      if assigns[:error] do
+        "border-red-500 focus:border-red-500 focus:ring-red-500"
+      else
+        "focus:border-green-500 focus:ring-green-500"
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :datepicker_error_class,
+        datepicker_error_class
+      )
+
     ~H"""
     <div class="space-y-1">
       <input
@@ -439,14 +629,7 @@ defmodule NatureUI.Components.Input do
             true -> "datepicker"
           end
         }
-        class={[
-          "block w-full rounded-md border-gray-300 shadow-sm sm:text-sm transition",
-          if(@error,
-            do: "border-red-500 focus:border-red-500 focus:ring-red-500",
-            else: "focus:border-green-500 focus:ring-green-500"
-          ),
-          @class
-        ]}
+        class={Tw.merge("#{@datepicker_base_class} #{@datepicker_error_class} #{@class}")}
         {@rest}
       />
 
@@ -457,10 +640,6 @@ defmodule NatureUI.Components.Input do
         ]}>
           <%= @message %>
         </p>
-      <% end %>
-
-      <%= if @offline do %>
-        <script src="/nature_ui/nature_ui.js"></script>
       <% end %>
     </div>
     """
@@ -487,6 +666,29 @@ defmodule NatureUI.Components.Input do
       |> assign_new(:message, fn -> nil end)
       |> assign_new(:filenames, fn -> [] end)
 
+    assigns =
+      assign(
+        assigns,
+        :fileupload_base_class,
+        "block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4
+           file:rounded-md file:border-0 file:text-sm file:font-semibold
+           file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+      )
+
+    fileupload_error_class =
+      if assigns[:error] do
+        "border-red-500 focus:border-red-500 focus:ring-red-500"
+      else
+        "border-gray-300 focus:border-green-500 focus:ring-green-500"
+      end
+
+    assigns =
+      assign(
+        assigns,
+        :fileupload_error_class,
+        fileupload_error_class
+      )
+
     ~H"""
     <div class="space-y-1">
       <input
@@ -495,16 +697,7 @@ defmodule NatureUI.Components.Input do
         multiple={@multiple}
         accept={@accept}
        phx-change="files_selected"
-        class={[
-          "block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4
-           file:rounded-md file:border-0 file:text-sm file:font-semibold
-           file:bg-green-50 file:text-green-700 hover:file:bg-green-100",
-          if(@error,
-            do: "border-red-500 focus:border-red-500 focus:ring-red-500",
-            else: "border-gray-300 focus:border-green-500 focus:ring-green-500"
-          ),
-          @class
-        ]}
+        class={Tw.merge("#{@fileupload_base_class} #{@fileupload_error_class} #{@class}")}
         {@rest}
       />
 
@@ -524,11 +717,6 @@ defmodule NatureUI.Components.Input do
             <li><%= name %></li>
           <% end %>
         </ul>
-      <% end %>
-
-
-      <%= if @offline do %>
-        <script src="/nature_ui/nature_ui.js"></script>
       <% end %>
     </div>
     """
