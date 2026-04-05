@@ -1,4 +1,4 @@
-defmodule NatureUi.Tw do
+defmodule NatureUi.Utils.Tw do
   def merge(classes) when is_list(classes) do
     classes
     |> Enum.filter(& &1)

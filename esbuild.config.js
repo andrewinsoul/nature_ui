@@ -1,14 +1,18 @@
-// esbuild.config.js
-import esbuild from "esbuild";
-import sveltePlugin from "esbuild-svelte";
+const esbuild = require("esbuild");
+
+const watch = process.argv.includes("--watch");
 
 esbuild.build({
-    entryPoints: ["src/registry.js"],
+    entryPoints: ["assets/js/index.js"],
     bundle: true,
-    outfile: "priv/static/nature_ui/nature_ui.js",
-    plugins: [sveltePlugin()],
-    minify: true,
-    sourcemap: true,
-    format: "iife",
-    globalName: "NatureUI"
+    minify: !watch,
+    sourcemap: watch,
+    target: ["es2017"],
+    outfile: "priv/static/nature_ui/hooks.js",
+    watch: watch && {
+        onRebuild(error) {
+            if (error) console.error("❌ Rebuild failed:", error);
+            else console.log("✅ Rebuilt successfully");
+        }
+    }
 }).catch(() => process.exit(1));

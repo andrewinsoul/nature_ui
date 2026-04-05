@@ -1,5 +1,5 @@
 defmodule NatureUI.Components.Alert do
-  alias NatureUi.Tw
+  alias NatureUi.Utils.Tw
   use Phoenix.Component
 
   defp styles do

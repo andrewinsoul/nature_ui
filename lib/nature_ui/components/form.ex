@@ -1,5 +1,5 @@
 defmodule NatureUI.Components.Form do
-  alias NatureUi.Tw
+  alias NatureUi.Utils.Tw
   use Phoenix.Component
 
   @doc """

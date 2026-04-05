@@ -31,7 +31,8 @@ defmodule NatureUI.MixProject do
       # optional if you want Tailwind integration..
       {:tailwind, "~> 0.2", runtime: false},
       # for bundling Svelte JS assets
-      {:esbuild, "~> 0.7", runtime: false}
+      {:esbuild, "~> 0.7", runtime: false},
+      {:jason, "~> 1.4"}
     ]
   end
 
