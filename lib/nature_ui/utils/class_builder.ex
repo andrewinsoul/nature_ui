@@ -1,6 +1,6 @@
 defmodule NatureUI.Utils.ClassBuilder do
   @moduledoc false
-  alias NatureUi.Utils.Tw
+  alias NatureUI.Utils.Tw
 
   def build(classes) when is_list(classes) do
     classes

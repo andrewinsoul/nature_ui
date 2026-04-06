@@ -1,5 +1,5 @@
 defmodule NatureUI.Components.Button do
-  alias NatureUi.Utils.Tw
+  alias NatureUI.Utils.Tw
   use Phoenix.Component
 
   defp variants do

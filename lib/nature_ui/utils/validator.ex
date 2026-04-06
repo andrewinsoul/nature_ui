@@ -1,4 +1,4 @@
-defmodule NatureUi.Utils.Validator do
+defmodule NatureUI.Utils.Validator do
   @moduledoc false
   def extract_rules(changeset, field) do
     validations =

@@ -1,5 +1,5 @@
-defmodule NatureUi.Components.Input do
-  alias NatureUi.Utils.Validator
+defmodule NatureUI.Components.Input do
+  alias NatureUI.Utils.Validator
   alias NatureUI.Theme
   alias NatureUI.Utils.ClassBuilder
   use Phoenix.Component
