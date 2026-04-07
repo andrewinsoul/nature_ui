@@ -4,12 +4,14 @@ defmodule NatureUI.Utils.Tw do
     |> Enum.filter(& &1)
     |> Enum.flat_map(&split_classes/1)
     |> Tails.merge()
+    |> to_string()
   end
 
   def merge(classes) when is_binary(classes) do
     classes
     |> split_classes()
     |> Tails.merge()
+    |> to_string()
   end
 
   defp split_classes(class) when is_binary(class) do
