@@ -38,7 +38,10 @@ defmodule NatureUI.MixProject do
 
   defp aliases do
     [
-      "assets.build": ["esbuild nature_ui"]
+      "assets.build": [
+        "esbuild nature_ui",
+        "tailwind nature_ui --minify"
+      ]
     ]
   end
 
