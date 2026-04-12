@@ -58,7 +58,7 @@ defmodule NatureUI.MixProject do
     [
       name: "nature_ui",
       licenses: ["MIT"],
-      maintainers: ["Andrew Okoye"],
+      maintainers: ["Andrew Nature Okoye"],
       links: %{"GitHub" => "https://github.com/andrewinsoul/nature_ui"},
       files: ~w(lib priv/static mix.exs README.md LICENSE)
     ]

@@ -1,8 +1,7 @@
-defmodule NatureUi do
-  alias Phoenix.LiveView.Plug
+defmodule NatureUI do
   defmacro static_plug do
     quote do
-      plug(Plug.Static,
+      plug(Elixir.Plug.Static,
         at: "/nature_ui",
         from: {:nature_ui, "priv/static"},
         gzip: false
