@@ -27,6 +27,7 @@ defmodule NatureUI.MixProject do
     [
       {:phoenix, "~> 1.7"},
       {:tails, "~> 0.1.11"},
+      {:plug, "~> 1.14"},
       {:phoenix_live_view, "~> 1.0.0"},
       # optional if you want Tailwind integration..
       {:tailwind, "~> 0.2", runtime: false},

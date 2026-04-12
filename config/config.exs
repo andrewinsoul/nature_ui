@@ -7,7 +7,7 @@ config :esbuild,
       assets/js/index.js
       --bundle
       --target=es2017
-      --outfile=priv/static/nature_ui/nature_ui.js
+      --outfile=priv/static/js/nature_ui.js
     ),
     cd: Path.expand("../", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
@@ -19,7 +19,7 @@ config :tailwind,
     args: ~w(
       --config=assets/tailwind.config.js
       -i assets/css/app.css
-      -o priv/static/nature_ui.css
+      -o priv/static/css/nature_ui.css
     ),
     cd: Path.expand("..", __DIR__)
   ]
