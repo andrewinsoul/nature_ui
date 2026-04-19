@@ -48,9 +48,7 @@ defmodule NatureUI.MixProject do
 
   defp description do
     """
-    NatureUI is a LiveView component library with an offline-first toggle.
-    By default, components use LiveView interactivity, but with `offline: true`
-    they load precompiled Svelte assets for offline resilience.
+    NatureUI is a LiveView component library with ability to still feel live even when offline.
     """
   end
 

@@ -91,8 +91,9 @@
   var modal_default = NatureModal;
 
   // assets/js/index.js
-  window.NatureUIHooks = {
+  var Hooks = {
     NatureInput: input_default,
     NatureModal: modal_default
   };
+  var index_default = Hooks;
 })();
