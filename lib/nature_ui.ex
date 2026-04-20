@@ -9,5 +9,12 @@ defmodule NatureUI do
     end
   end
 
+  defmacro __using__(_) do
+    quote do
+      import NatureUI
+    end
+  end
+
   defdelegate styles(assigns), to: NatureUI.Components.Assets
+  defdelegate scripts(assigns), to: NatureUI.Components.Assets
 end
