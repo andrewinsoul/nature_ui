@@ -6,4 +6,8 @@ const Hooks = {
   NatureModal
 };
 
+window.NatureUI = {
+  Hooks
+};
+
 export default Hooks;
