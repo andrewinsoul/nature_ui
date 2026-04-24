@@ -1,4 +1,5 @@
 defmodule NatureUI.Components.Input do
+  alias NatureUI.Utils.Tw
   alias NatureUI.Utils.Validator
   alias NatureUI.Theme
   alias NatureUI.Utils.ClassBuilder
@@ -8,6 +9,7 @@ defmodule NatureUI.Components.Input do
   attr(:label, :string, default: nil)
   attr(:type, :string, default: "text")
   attr(:class, :string, default: "")
+  attr(:label_class, :string, default: "")
   attr(:size, :atom, default: :md)
   attr(:variant, :atom, default: :default)
   attr(:disabled, :boolean, default: false)
@@ -82,7 +84,7 @@ defmodule NatureUI.Components.Input do
     ~H"""
       <div id={"nature-input-#{@field.id}"} class="w-full" phx-hook="NatureInput" data-rules={@rules_json}>
         <%= if @label do %>
-          <label class="block text-sm mb-1"><%= @label %></label>
+          <label class={Tw.merge(["block text-sm mb-1", @label_class])}><%= @label %></label>
         <% end %>
 
         <div class={@wrapper_class}>
@@ -97,7 +99,7 @@ defmodule NatureUI.Components.Input do
             name={@field.name}
             value={@field.value}
             id={@field.id}
-            class="flex-1 py-2 outline-none bg-transparent"
+            class="flex-1 py-2 outline-none bg-transparent text-black"
             />
 
             <%= if @suffix_icon do %>
