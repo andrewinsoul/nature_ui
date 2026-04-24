@@ -95,5 +95,8 @@
     NatureInput: input_default,
     NatureModal: modal_default
   };
+  window.NatureUI = {
+    Hooks
+  };
   var index_default = Hooks;
 })();
