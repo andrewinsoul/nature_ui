@@ -1,5 +1,5 @@
 defmodule NatureUI.Components.Alert do
-  alias NatureUI.Utils.Tw
+  alias NatureUI.Utils.ClassBuilder
   use Phoenix.Component
 
   defp styles do
@@ -25,7 +25,7 @@ defmodule NatureUI.Components.Alert do
 
     ~H"""
     <div
-      class={Tw.merge([
+      class={ClassBuilder.build([
         "rounded-md p-4 flex items-center gap-2",
         styles()[@type],
         @class

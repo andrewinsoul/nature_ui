@@ -1,5 +1,5 @@
 defmodule NatureUI.Components.Button do
-  alias NatureUI.Utils.Tw
+  alias NatureUI.Utils.ClassBuilder
   use Phoenix.Component
 
   defp variants do
@@ -16,6 +16,15 @@ defmodule NatureUI.Components.Button do
   - `class`: custom Tailwind classes to override or extend defaults
   - `rest`: any other attributes (phx-click, type, etc.)
   """
+  attr(:type, :string, default: "button")
+  attr(:class, :string, default: "")
+  attr(:fallback, :string, default: nil)
+  attr(:target, :string, default: nil)
+  attr(:action, :string, default: nil)
+  attr(:rest, :global)
+
+  slot(:inner_block, required: true)
+
   def button(assigns) do
     assigns =
       assigns
@@ -24,7 +33,12 @@ defmodule NatureUI.Components.Button do
 
     ~H"""
     <button
-      class={Tw.merge([
+      type={@type}
+      phx-hook="NatureButton"
+      data-nui-fallback={@fallback}
+      data-target={@target}
+      data-action={@action}
+      class={ClassBuilder.build([
         "px-4 py-2 rounded font-medium transition",
          variants()[@variant],
          @class

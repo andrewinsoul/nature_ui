@@ -1,5 +1,5 @@
 defmodule NatureUI.Components.Form do
-  alias NatureUI.Utils.Tw
+  alias NatureUI.Utils.ClassBuilder
   use Phoenix.Component
 
   @doc """
@@ -22,17 +22,17 @@ defmodule NatureUI.Components.Form do
     ~H"""
     <form
       data-nature-ui="form"
-      class={Tw.merge([
+      class={ClassBuilder.build([
         "space-y-6",
         @class
       ])}
       {@rest}
     >
+    <%= if @error do %>
+      <p class="text-sm text-red-600 mt-2"><%= @error %></p>
+    <% end %>
       <%= render_slot(@inner_block) %>
 
-      <%= if @error do %>
-        <p class="text-sm text-red-600 mt-2"><%= @error %></p>
-      <% end %>
 
     </form>
     """
