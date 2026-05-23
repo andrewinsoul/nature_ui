@@ -1,7 +1,9 @@
 defmodule NatureUI.Components do
-  defmacro __using__(_) do
+  @moduledoc false
+
+  defmacro __using__(_opts \\ []) do
     quote do
-      import NatureUI
+      use NatureUI
     end
   end
 end

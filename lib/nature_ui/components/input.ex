@@ -1,4 +1,15 @@
 defmodule NatureUI.Components.Input do
+  @moduledoc """
+  Form field inputs backed by `%Phoenix.HTML.FormField{}`.
+
+  Use inside [`NatureUI.Components.Form`](NatureUI.Components.Form.html) with a
+  `to_form/2` assign:
+
+      <.form for={@form} phx-change="validate" phx-submit="save">
+        <.text field={@form[:email]} label="Email" />
+      </.form>
+  """
+
   alias NatureUI.Utils.Validator
   alias NatureUI.Theme
   alias NatureUI.Utils.ClassBuilder
@@ -124,5 +135,9 @@ defmodule NatureUI.Components.Input do
     """
   end
 
-  defp translate_error({msg, _}), do: msg
+  defp translate_error({msg, opts}) do
+    Enum.reduce(opts, msg, fn {key, value}, acc ->
+      String.replace(acc, "%{#{key}}", to_string(value))
+    end)
+  end
 end
