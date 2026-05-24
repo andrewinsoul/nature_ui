@@ -1,15 +1,13 @@
 import NatureButton from "./hooks/button";
 import NatureInput from "./hooks/input";
 import NatureModal from "./hooks/modal";
+import NatureUIPasswordToggle from "./hooks/passwordToggle";
 
-const Hooks = {
+const coreHooks = {
   NatureInput,
   NatureModal,
-  NatureButton
-};
-
-window.NatureUI = {
-  Hooks
+  NatureButton,
+  NatureUIPasswordToggle
 };
 
 (function () {
@@ -51,7 +49,7 @@ window.addEventListener("online", () => {
   )
 })
 
-window.NatureUI.isInteractive = function(){
+window.NatureUI.isInteractive = function () {
   const state = window.NatureUI.state
 
   return state.browserOnline && state.liveviewConnected
@@ -63,4 +61,18 @@ window.NatureUI.registerAction = function (name, handler) {
   this.actions[name] = handler
 }
 
-export default Hooks;
+NatureUI.install = (liveSocket, opts = {}) => {
+  const {
+    hooks: appHooks = {}
+  } = opts
+
+  const mergedHooks = {
+    ...coreHooks,
+    ...appHooks
+  }
+
+  liveSocket.hooks = {
+    ...liveSocket.hooks,
+    ...mergedHooks
+  }
+}

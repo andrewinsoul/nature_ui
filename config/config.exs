@@ -7,6 +7,7 @@ config :esbuild,
       assets/js/index.js
       --bundle
       --target=es2017
+      --format=esm
       --outfile=priv/static/js/nature_ui.js
     ),
     cd: Path.expand("../", __DIR__),
