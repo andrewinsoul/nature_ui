@@ -10,8 +10,8 @@ const coreHooks = {
   NatureUIPasswordToggle
 };
 
-window.NatureUI = window.NatureUI || {}
-const NatureUI = window.NatureUI
+window.NatureUI = window.NatureUI || {};
+const NatureUI = window.NatureUI;
 
 (function () {
   NatureUI.state = {

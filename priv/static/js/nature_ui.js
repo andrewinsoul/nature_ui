@@ -237,7 +237,8 @@ var coreHooks = {
   NatureUIPasswordToggle: passwordToggle_default
 };
 window.NatureUI = window.NatureUI || {};
-var NatureUI = window.NatureUI(function() {
+var NatureUI = window.NatureUI;
+(function() {
   NatureUI.state = {
     liveviewConnected: true,
     browserOnline: navigator.onLine
