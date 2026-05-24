@@ -10,8 +10,11 @@ const coreHooks = {
   NatureUIPasswordToggle
 };
 
+window.NatureUI = window.NatureUI || {}
+const NatureUI = window.NatureUI
+
 (function () {
-  window.NatureUI.state = {
+  NatureUI.state = {
     liveviewConnected: true,
     browserOnline: navigator.onLine
   }
@@ -19,7 +22,7 @@ const coreHooks = {
 
 window.addEventListener("phx:disconnected", () => {
   console.info("[NatureUI] Liveview disconnected")
-  window.NatureUI.state.liveviewConnected = false
+  NatureUI.state.liveviewConnected = false
   window.dispatchEvent(
     new Event("natureui:connection_changed")
   )
@@ -27,7 +30,7 @@ window.addEventListener("phx:disconnected", () => {
 
 window.addEventListener("phx:reconnected", () => {
   console.info("[NatureUI] Liveview reconnected")
-  window.NatureUI.state.liveviewConnected = true
+  NatureUI.state.liveviewConnected = true
   window.dispatchEvent(
     new Event("natureui:connection_changed")
   )
@@ -35,7 +38,7 @@ window.addEventListener("phx:reconnected", () => {
 
 window.addEventListener("offline", () => {
   console.info("[NatureUI] Browser offline")
-  window.NatureUI.state.browserOnline = false
+  NatureUI.state.browserOnline = false
   window.dispatchEvent(
     new Event("natureui:connection_changed")
   )
@@ -43,21 +46,21 @@ window.addEventListener("offline", () => {
 
 window.addEventListener("online", () => {
   console.info("[NatureUI] Browser online")
-  window.NatureUI.state.browserOnline = true
+  NatureUI.state.browserOnline = true
   window.dispatchEvent(
     new Event("natureui:connection_changed")
   )
 })
 
-window.NatureUI.isInteractive = function () {
-  const state = window.NatureUI.state
+NatureUI.isInteractive = function () {
+  const state = NatureUI.state
 
   return state.browserOnline && state.liveviewConnected
 }
 
-window.NatureUI.actions = {}
+NatureUI.actions = {}
 
-window.NatureUI.registerAction = function (name, handler) {
+NatureUI.registerAction = function (name, handler) {
   this.actions[name] = handler
 }
 
