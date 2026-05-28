@@ -17,9 +17,9 @@ defmodule NatureUI.Components.Form do
 
   slot(:inner_block, required: true)
 
-  def form(assigns) do
+  def nature_form(assigns) do
     ~H"""
-    <Phoenix.Component.form
+    <.form
       for={@for}
       as={@as}
       id={@id}
@@ -29,7 +29,6 @@ defmodule NatureUI.Components.Form do
           @class
         ]
       )}
-      phx-hook="NatureUIForm"
       data-fallback={@fallback}
       {@rest}
     >
@@ -37,7 +36,7 @@ defmodule NatureUI.Components.Form do
       <%= @error %>
     </p>
       {render_slot(@inner_block)}
-    </Phoenix.Component.form>
+    </.form>
     """
   end
 end

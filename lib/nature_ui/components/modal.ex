@@ -11,7 +11,7 @@ defmodule NatureUI.Components.Modal do
   attr(:size, :atom, default: :md)
   attr(:animated, :boolean, default: true)
 
-  def modal(assigns) do
+  def nature_modal(assigns) do
     modal_width = Theme.size(:modal, assigns.size)
 
     container_class =

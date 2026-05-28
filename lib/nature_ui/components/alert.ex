@@ -17,7 +17,7 @@ defmodule NatureUI.Components.Alert do
   - `class`: custom Tailwind classes to override or extend defaults
   - `rest`: any other attributes
   """
-  def alert(assigns) do
+  def nature_alert(assigns) do
     assigns =
       assigns
       |> assign_new(:type, fn -> :info end)

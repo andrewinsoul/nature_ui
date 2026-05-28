@@ -35,17 +35,15 @@ defmodule NatureUI do
   so you keep CSRF, LiveView bindings, and `%Phoenix.HTML.FormField{}` access.
   """
 
-  defmacro __using__(_opts \\ []) do
-    quote do
-      import NatureUI, only: [styles: 1, scripts: 1]
-      import NatureUI.Components.Alert, only: [alert: 1]
-      import NatureUI.Components.Button, only: [button: 1]
-      import NatureUI.Components.Form, only: [form: 1]
-      import NatureUI.Components.Input, only: [text: 1]
-      import NatureUI.Components.Modal
-    end
-  end
-
-  defdelegate styles(assigns), to: NatureUI.Components.Assets
+  # defmacro __using__(_opts \\ []) do
+  #   quote do
+  #     import NatureUI, only: [styles: 1, scripts: 1]
+  #     import NatureUI.Components.Alert, only: [alert: 1]
+  #     import NatureUI.Components.Button, only: [button: 1]
+  #     import NatureUI.Components.Form, only: [form: 1]
+  #     import NatureUI.Components.Input, only: [text: 1]
+  #     import NatureUI.Components.Modal
+  #   end
+  # end
   defdelegate scripts(assigns), to: NatureUI.Components.Assets
 end

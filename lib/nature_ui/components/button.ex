@@ -2,14 +2,6 @@ defmodule NatureUI.Components.Button do
   alias NatureUI.Utils.ClassBuilder
   use Phoenix.Component
 
-  defp variants do
-    %{
-      primary: "bg-green-600 text-white hover:bg-green-700",
-      secondary: "bg-gray-200 text-gray-800 hover:bg-gray-300",
-      danger: "bg-red-600 text-white hover:bg-red-700"
-    }
-  end
-
   @doc """
   Renders a button with Tailwind defaults.
   - `variant`: :primary | :secondary | :danger (default: :primary)
@@ -25,7 +17,7 @@ defmodule NatureUI.Components.Button do
 
   slot(:inner_block, required: true)
 
-  def button(assigns) do
+  def nature_button(assigns) do
     assigns =
       assigns
       |> assign_new(:variant, fn -> :primary end)
@@ -39,8 +31,8 @@ defmodule NatureUI.Components.Button do
       data-target={@target}
       data-action={@action}
       class={ClassBuilder.build([
-        "px-4 py-2 rounded font-medium transition",
-         variants()[@variant],
+        "px-4 py-2 rounded transition cursor-pointer font-[600]",
+         "bg-blue-600 text-white hover:bg-blue-700",
          @class
       ])}
       {@rest}

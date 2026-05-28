@@ -5,7 +5,8 @@ defmodule NatureUI.Static do
         at: "/nature_ui",
         from: {:nature_ui, "priv/static"},
         gzip: false,
-        only: ~w(css js)
+        # only: ~w(css js)
+        only: ~w(js)
       )
     end
   end

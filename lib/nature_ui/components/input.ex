@@ -33,7 +33,7 @@ defmodule NatureUI.Components.Input do
   slot(:prefix_icon)
   slot(:suffix_icon)
 
-  def text(assigns) do
+  def nature_text(assigns) do
     field = assigns.field
     errors = Enum.map(field.errors, &translate_error/1)
     has_error = Enum.any?(errors)
@@ -58,17 +58,18 @@ defmodule NatureUI.Components.Input do
 
     wrapper_class =
       ClassBuilder.build([
-        "group flex items-center rounded-md border transition shadow-sm focus-within:ring-2 focus-within:ring-offset-0 focus-within:ring-blue-500/40",
+        "group flex items-center p-1 rounded-md border transition shadow-sm focus-within:ring-2 focus-within:ring-offset-0 focus-within:border-blue-500/40 focus-within:ring-transparent",
+        "transition-all duration-300 ease-in-out",
         size_class,
         variant,
         assigns.class
       ])
 
-    inner_input_class =
-      ClassBuilder.build([
-        "flex-1 min-w-0 bg-transparent outline-none placeholder:text-gray-400 text-gray-900 disabled:cursor-not-allowed disabled:opacity-75",
-        assigns.input_class
-      ])
+      inner_input_class =
+        ClassBuilder.build([
+          "flex-1 min-w-0 bg-transparent placeholder:text-gray-400 text-gray-900 disabled:cursor-not-allowed disabled:opacity-75 p-1 border-none focus:outline-0 focus:ring-0 w-full",
+          assigns.input_class
+        ])
 
     assigns =
       assigns
